@@ -1,4 +1,6 @@
-## User
+# README
+
+## Users
 |Column            |Type  |Options                  |
 |nickname          |string|null: false              |
 |email             |string|null: false, unique: true|
@@ -15,17 +17,17 @@
 
 
 
-## Item
-|Column         |Type      |Options                      |
-|name           |string    |null: false                  |
-|description    |text      |null: false                  |
-|price          |integer   |null: false                  |
-|user           |references|null: false foreign_key: true|
-|category       |integer   |null: false                  |
-|item_condition |integer   |null: false                  |
-|delivery_charge|integer   |null: false                  |
-|shipping_region|integer   |null: false                  |
-|shipping_day   |integer   |null: false                  |
+## Items
+|Column            |Type      |Options                      |
+|name              |string    |null: false                  |
+|description       |text      |null: false                  |
+|price             |integer   |null: false                  |
+|user              |references|null: false foreign_key: true|
+|category_id       |integer   |null: false                  |
+|item_condition_id |integer   |null: false                  |
+|delivery_charge_id|integer   |null: false                  |
+|shipping_region_id|integer   |null: false                  |
+|shipping_day_id   |integer   |null: false                  |
 
 ### [Item]
 - belongs_to :user
@@ -38,7 +40,7 @@
 
 
 
-## Purchase
+## Purchases
 |Column|Type      |Options                       |
 |user  |references|null: false, foreign_key: true|
 |item  |references|null: false, foreign_key: true|
@@ -50,15 +52,15 @@
 
 
 
-## ShippingAddress
-|Column       |Type      |Options                       |
-|purchase     |references|null: false, foreign_key: true|
-|postal_code  |string    |null: false                   |
-|prefecture   |integer   |null: false                   |
-|city         |string    |null: false                   |
-|address      |string    |null: false                   |
-|building_name|string    |                              |
-|phone_number |string    |null: false                   |
+## ShippingAddresses
+|Column            |Type      |Options                       |
+|purchase          |references|null: false, foreign_key: true|
+|postal_code       |string    |null: false                   |
+|shipping_region_id|integer   |null: false                   |
+|city              |string    |null: false                   |
+|address           |string    |null: false                   |
+|building_name     |string    |                              |
+|phone_number      |string    |null: false                   |
 
 ### [ShippingAddress]
 - belongs_to :purchase
