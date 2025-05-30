@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        name: "商品名"
+    errors:
+      models:
+        item:
+          attributes:
+            name:
+              blank: "を入力してください"
