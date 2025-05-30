@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :move_to_index, only: [:edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :set_active_hash_data, only: [:new, :create, :edit, :update]
 
   def new
@@ -30,6 +30,10 @@ class ItemsController < ApplicationController
 
   def edit
     
+  end
+  def destroy
+    @item.destroy
+    redirect_to root_path, notice: "商品を削除しました"
   end
 
   def update
@@ -71,7 +75,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(
       :name, :description, :category_id, :condition_id,
       :shipping_fee_id, :prefecture_id, :shipping_day_id, :price,
-      image: []  
+      :image
     )
   end
 
