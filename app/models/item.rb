@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   # バリデーション
   with_options presence: true do
     validates :image
-    validates :name
+    validates :name, presence: { message: "商品名を入力してください" }
     validates :description
     validates :category_id
     validates :condition_id
@@ -24,13 +24,12 @@ class Item < ApplicationRecord
   end
 
   # 「---」（id = 1）を選ばせないバリデーション
-  validates :category_id,        numericality: { other_than: 1, message: "を選択してください" }
-  validates :condition_id,       numericality: { other_than: 1, message: "を選択してください" }
-  validates :shipping_fee_id,    numericality: { other_than: 1, message: "を選択してください" }
-  validates :prefecture_id,      numericality: { other_than: 1, message: "を選択してください" }
-  validates :shipping_day_id,   numericality: { other_than: 1, message: "を選択してください" }
+  validates :category_id,      numericality: { other_than: 1, message: "を選択してください" }
+  validates :condition_id,     numericality: { other_than: 1, message: "を選択してください" }
+  validates :shipping_fee_id,  numericality: { other_than: 1, message: "を選択してください" }
+  validates :prefecture_id,    numericality: { other_than: 1, message: "を選択してください" }
+  validates :shipping_day_id,  numericality: { other_than: 1, message: "を選択してください" }
 
-  # 価格の範囲および半角数値であること
   validates :price,
             numericality: {
               only_integer: true,
@@ -38,4 +37,9 @@ class Item < ApplicationRecord
               less_than_or_equal_to: 9_999_999,
               message: "は¥300〜¥9,999,999の範囲で入力してください"
             }
+
+  def sold_out?
+    false
+  end
 end
+

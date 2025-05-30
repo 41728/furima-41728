@@ -4,21 +4,20 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @categories = Category.all
-    @conditions = Condition.all
-    @shipping_fees = ShippingFee.all
-    @prefectures = Prefecture.all
-    @shipping_days = ShippingDay.all
+  end
+
+  def index
+    @items = Item.all.includes(image_attachment: :blob).order(created_at: :desc)
   end
 
   def create
     @item = Item.new(item_params)
-    @item.user = current_user  # 出品者を紐付け
-    @categories = Category.all 
+    @item.user = current_user  
 
     if @item.save
       redirect_to root_path, notice: "出品が完了しました"
     else
+      set_active_hash_data
       render :new
     end
   end

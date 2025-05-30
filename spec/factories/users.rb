@@ -11,3 +11,4 @@ FactoryBot.define do
     birth_date            { '1990-01-01' }
   end
 end
+
