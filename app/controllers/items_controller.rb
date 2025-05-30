@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.includes(image_attachment: :blob).order(created_at: :desc)
+    #@items = Item.all.includes(image_attachment: :blob).order(created_at: :desc)
   end
 
   def create

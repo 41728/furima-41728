@@ -1,4 +1,4 @@
-window.addEventListener('turbo:load', () => {
+window.addEventListener('turbo:render', () => {
   const priceInput = document.querySelector('input[name="item[price]"]');
   const feeDisplay = document.getElementById("add-tax-price");
   const profitDisplay = document.getElementById("profit");
