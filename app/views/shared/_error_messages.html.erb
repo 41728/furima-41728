@@ -1,8 +1,8 @@
-<% if defined?(@item) && @item && @item.errors.any? %>
+<% if @item.errors.any? %>
   <div class="error-alert">
     <ul>
       <% @item.errors.full_messages.uniq.each do |message| %>
-        <li class='error-message'><%= message %></li>
+        <li class="error-message"><%= message %></li>
       <% end %>
     </ul>
   </div>
