@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]  # Deviseのメソッドでログイン必須制御
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_active_hash_data, only: [:new, :create]
 
   def new
@@ -7,7 +8,8 @@ class ItemsController < ApplicationController
   end
 
   def index
-    #@items = Item.all.includes(image_attachment: :blob).order(created_at: :desc)
+    @items = Item.all.includes(:user,image_attachment: :blob).order(created_at: :desc)
+    @show_dummy = @items.empty?
   end
 
   def create
@@ -20,6 +22,12 @@ class ItemsController < ApplicationController
       set_active_hash_data
       render :new
     end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path, notice: "商品を削除しました"
   end
 
   private
