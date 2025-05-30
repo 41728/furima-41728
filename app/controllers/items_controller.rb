@@ -30,6 +30,11 @@ class ItemsController < ApplicationController
     #redirect_to root_path, notice: "商品を削除しました"
   #end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
+
   private
 
   def item_params
