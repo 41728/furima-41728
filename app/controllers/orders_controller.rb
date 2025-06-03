@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
   before_action :prevent_sold_out
-  before_action :move_to_root_if_seller
+  #before_action :move_to_root_if_seller
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
 
   def order_address_params
     params.require(:order_address).permit(
-      :post_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :token
+      :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :token
     ).merge(
       user_id: current_user.id,
       item_id: params[:item_id],
