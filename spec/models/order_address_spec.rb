@@ -31,6 +31,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
       end
+      
+      it '電話番号が9桁以下では購入できない' do
+        @order_address.phone_number = '123456789' 
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
 
       it '都道府県が選択されていないと購入できない' do
         @order_address.prefecture_id = 1

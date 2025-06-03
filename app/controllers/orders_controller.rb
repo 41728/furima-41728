@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
   before_action :prevent_sold_out
+  before_action :move_to_root_if_seller
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]

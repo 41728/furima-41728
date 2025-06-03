@@ -29,15 +29,15 @@
     <%= form_with model: @order_address, url: item_orders_path(@item), id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
 
       <% if @order_address.errors.any? %>
-        <div class="error_messages">
-          <h2><%= pluralize(@order_address.errors.count, "error") %>がありました:</h2>
+        <div class="error-messages">
           <ul>
             <% @order_address.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
+              <li class="error-message"><%= msg %></li>
             <% end %>
           </ul>
         </div>
       <% end %>
+
 
       <%# Stripeカード情報入力エリア %>
       <div class='credit-card-form'>
