@@ -23,13 +23,13 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号が空だと購入できない' do
         @order_address.postal_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code can't be blank")
+        expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
       end
 
       it '郵便番号がハイフンなしだと購入できない' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
       end
 
       it '都道府県が選択されていないと購入できない' do
@@ -47,7 +47,7 @@ RSpec.describe OrderAddress, type: :model do
       it '番地が空だと購入できない' do
         @order_address.address = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("House number can't be blank")
+        expect(@order_address.errors.full_messages).to include("Address can't be blank")
       end
 
       it '電話番号が空だと購入できない' do
