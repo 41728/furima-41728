@@ -26,7 +26,7 @@ class OrderAddress
       postal_code: postal_code,
       prefecture_id: prefecture_id,
       city: city,
-      address: address,
+      address: self.address,
       building_name: building_name,
       phone_number: phone_number,
       order_id: order.id
