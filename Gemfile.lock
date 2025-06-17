@@ -385,7 +385,7 @@ DEPENDENCIES
   jbuilder
   mysql2 (~> 0.5)
   payjp
-  pg
+  pg (~> 1.4)
   pry-rails
   puma (>= 5.0)
   rails (~> 7.1.0)
