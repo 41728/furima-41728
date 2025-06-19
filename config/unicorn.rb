@@ -2,7 +2,7 @@
 app_path = File.expand_path('../../', __FILE__)
 
 #アプリケーションサーバの性能を決定する
-worker_processes 1
+worker_processes 2
 
 #アプリケーションの設置されているディレクトリを指定
 working_directory app_path
@@ -20,7 +20,7 @@ stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 #Railsアプリケーションの応答を待つ上限時間を設定
-timeout 60
+timeout 120
 
 #以下は応用的な設定なので説明は割愛
 
